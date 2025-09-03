@@ -7,7 +7,13 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.urlencoded({extended: true}));
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:3000', 'https://mohagusrifai02.github.io'],
+  methods: ['GET', 'POST', 'OPTIONS'],
+  credentials: true
+}));
+
+app.options('*', cors());
 app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/gmb', express.static('public/gmb'));
