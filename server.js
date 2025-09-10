@@ -13,7 +13,7 @@ app.use(cors({
   credentials: true
 }));
 
-app.options('*', cors());
+app.options('/{*splat}', cors());
 app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/gmb', express.static('public/gmb'));
