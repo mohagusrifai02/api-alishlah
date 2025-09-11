@@ -8,7 +8,7 @@ const PORT = 3000;
 
 app.use(express.urlencoded({extended: true}));
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://mohagusrifai02.github.io', 'https://al-ishlah.vercel.app', "http://192.168.43.71:3000"],
+  origin: ['http://localhost:3000', 'https://mohagusrifai02.github.io', 'https://al-ishlah-tau.vercel.app', "http://192.168.43.71:3000"],
   methods: ['GET', 'POST', 'OPTIONS', 'PUT','DELETE'],
   credentials: true
 }));
