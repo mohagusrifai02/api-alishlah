@@ -30,6 +30,7 @@ export const getBlogs = async(req,res)=>{
         const total = await db('blogs').count('id as count').first();
         const blogs = await db('blogs')
         .select('id','judul','slug','kategori','paragraf','gambar')
+        .orderBy('id','desc')
         .limit(limit)
         .offset(offset);
         res.json({
