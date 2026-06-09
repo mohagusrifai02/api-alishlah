@@ -3,7 +3,7 @@ import db from '../db.js';
 
 // Inisialisasi Midtrans Snap
 const snap = new midtransClient.Snap({
-    isProduction: false, // Ubah ke true jika sudah live
+    isProduction: process.env.NODE_ENV === 'production', 
     serverKey: process.env.MIDTRANS_SERVER_KEY,
     clientKey: process.env.MIDTRANS_CLIENT_KEY
 });

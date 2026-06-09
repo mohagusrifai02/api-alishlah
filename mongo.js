@@ -5,10 +5,16 @@ dotenv.config();
 
 const connectMongo = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI);
-    console.log('✅ MongoDB Atlas connected');
+    if (!process.env.MONGO_URI) {
+      throw new Error('MONGO_URI is missing from environment variables');
+    }
+    await mongoose.connect(process.env.MONGO_URI, {
+      serverSelectionTimeoutMS: 5000 // Timeout setelah 5 detik jika gagal
+    });
+    console.log('✅ MongoDB connected');
   } catch (err) {
-    console.error('❌ MongoDB connection error:', err);
+    console.error('❌ MongoDB connection error:', err.message);
+    // Jangan hentikan proses di sini agar app.listen tetap bisa jalan untuk health check
   }
 };
 
